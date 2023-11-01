@@ -16,7 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home',
     [
-        "pagetitle" => "Home"
+        "pagetitle" => "Home",
+        "urlpage" => "/"
+    ]
+);
+});
+Route::get('/about', function () {
+    return view('about',
+    [
+        "pagetitle" => "About Us",
+        "urlpage" => "/about"
     ]
 );
 });
