@@ -52,7 +52,7 @@
             <a href="#">
                 <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Cat Fancier's Association</h5>
             </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Terdaftar di Cat Fanciers' Association (CFA)
+            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Terdaftar di Cat Fancier's Association (CFA)
             </p>
             <a href="https://cfa.org/kids/breeds-and-colors/cfa-breeds/" class="inline-flex items-center text-blue-600 hover:underline">
                 Learn more...

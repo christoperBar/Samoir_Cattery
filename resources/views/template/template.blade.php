@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css','resources/js/app.js'])
     <title>{{ $pagetitle }}</title>
+    <link rel="icon" href="https://i.imgur.com/lKnYFDA.png">
 </head>
 <body >
 <div class=" h-screen">
@@ -51,13 +52,10 @@
               <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Perawatan Kucing</a>
+                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cat Grooming</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pelatihan Kucing</a>
-                    </li>
-                    <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kesehatan Kucing</a>
+                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">/</a>
                     </li>
                   </ul>
               </div>
@@ -91,21 +89,30 @@
               <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Samoir Cattery</span>
           </a>
           </div>
+          <br>
           <div class="ms-3 mt-4 flex flex-row">
-            <a href="https://www.tiktok.com/@teamsamoir" class="text-gray-500 hover:text-secondary dark:hover:text-white me-2">
+            <a href="https://www.google.com/maps/place/Samoir+Cattery/@-7.9325183,112.6157591,17.56z/data=!4m6!3m5!1s0x2e788385392e2c5b:0xbcc88b39eb8ad155!8m2!3d-7.9323623!4d112.6175949!16s%2Fg%2F11p501tjt7?entry=ttu" class="text-gray-500 hover:text-secondary dark:hover:text-white me-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
               </svg>
-              
-            
             </a>
-        
-            <div>
+            <div class="ms-3">
               <span class="self-center text-sm whitespace-nowrap dark:text-white">Blok A8, Jalan Raya Permata Jingga,</span>
             <br>
             <span class="self-center text-sm whitespace-nowrap dark:text-white">Kel Tunggulwulung, Kec Lowokwaru,</span>
             <br>
             <span class="self-center text-sm whitespace-nowrap dark:text-white">Kota Malang, 65143</span>
+            </div>
+            
+          </div>
+          <div class="ms-3 mt-4 flex flex-row">
+            <a href="mailto:samoircattery@gmail.com" class="text-gray-500 hover:text-secondary dark:hover:text-white me-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>              
+            </a>
+            <div class="ms-3">
+              <span class="self-center text-sm whitespace-nowrap dark:text-white">samoircattery@gmail.com</span>
             </div>
             
           </div>
@@ -188,6 +195,7 @@
             </svg>
                 <span class="sr-only">Tiktok page</span>
             </a>
+            
         </div>
     </div>
   </div>

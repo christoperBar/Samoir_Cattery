@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerRas;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,22 @@ Route::get('/about', function () {
     ]
 );
 });
+Route::get('/why', function () {
+    return view('why',
+    [
+        "pagetitle" => "Why Samoir?",
+        "urlpage" => "/why"
+    ]
+);
+});
+
+Route::get('/collection',[ControllerRas::class,'showAllRases']);
+
+// Route::get('/collection', function () {
+//     return view('collection',
+//     [
+//         "pagetitle" => "Collections",
+//         "urlpage" => "/collection"
+//     ]
+// );
+// });
