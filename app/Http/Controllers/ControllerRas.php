@@ -19,4 +19,17 @@ class ControllerRas extends Controller
             "urlpage" => "/collection"
     ]);
     }
+
+    function getCatsWithID(int $id){
+        $allRases = Rase::all();
+        $cat = Rase::find($id)->cats;
+
+        return view('collectionwithid',[
+            'rases' => $allRases,
+            'cats' => $cat,
+            "pagetitle" => "Collection",
+            "urlpage" => "/collection",
+            "active" => $id
+    ]);
+    }
 }
