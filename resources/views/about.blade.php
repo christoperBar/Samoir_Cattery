@@ -47,7 +47,8 @@
         <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 drop-shadow-lg        ">
             <img src="https://upload.wikimedia.org/wikipedia/id/5/52/Logo_CatFanciers%27Association.jpg" class="h-9 mr-3" alt="Flowbite Logo" />
                 <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Cat Fancier's Association</h5>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Terdaftar di Cat Fanciers' Association (CFA)
+            </a>
+            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Terdaftar di Cat Fancier's Association (CFA)
             </p>
             <a href="https://cfa.org/kids/breeds-and-colors/cfa-breeds/" class="inline-flex items-center text-blue-600 hover:underline">
                 Learn more...

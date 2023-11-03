@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css','resources/js/app.js'])
     <title>{{ $pagetitle }}</title>
+    <link rel="icon" href="https://i.imgur.com/lKnYFDA.png">
 </head>
 <body >
 <div class=" h-screen">
@@ -34,6 +35,16 @@
             
           </li>
           <li>
+            @if ($urlpage == "/collection")
+              <a href="/collection" class="block py-2 pl-3 pr-4 text-gray-900 rounded bg-secondary md:bg-transparent md:text-secondary md:p-0 md:dark:text-secondary dark:bg-secondary md:dark:bg-transparent" aria-current="page">Collection</a>
+            
+            @else
+              <a href="/collection" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 dark:text-white md:dark:hover:text-secondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Collection</a>
+            
+            @endif
+            </li>
+          
+          <li>
               <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:w-auto dark:text-white md:dark:hover:text-secondary dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Services <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
     </svg></button>
@@ -41,10 +52,10 @@
               <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-secondary dark:hover:bg-gray-600 dark:hover:text-white">Cat Grooming</a>
+                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cat Grooming</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-secondary dark:hover:bg-gray-600 dark:hover:text-white">Our Events</a>
+                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">/</a>
                     </li>
                   </ul>
               </div>
@@ -72,20 +83,50 @@
   <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" class="flex items-center">
-                <img src="https://i.imgur.com/vBkTCud.png" class="h-16 mr-3" alt="FlowBite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Samoir Cattery</span>
+          <div>
+            <a href="/" class="flex items-center">
+              <img src="https://i.imgur.com/vBkTCud.png" class="h-16 mr-3" alt="FlowBite Logo" />
+              <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Samoir Cattery</span>
+          </a>
+          </div>
+          <br>
+          <div class="ms-3 mt-4 flex flex-row">
+            <a href="https://www.google.com/maps/place/Samoir+Cattery/@-7.9325183,112.6157591,17.56z/data=!4m6!3m5!1s0x2e788385392e2c5b:0xbcc88b39eb8ad155!8m2!3d-7.9323623!4d112.6175949!16s%2Fg%2F11p501tjt7?entry=ttu" class="text-gray-500 hover:text-secondary dark:hover:text-white me-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+              </svg>
             </a>
+            <div class="ms-3">
+              <span class="self-center text-sm whitespace-nowrap dark:text-white">Blok A8, Jalan Raya Permata Jingga,</span>
+            <br>
+            <span class="self-center text-sm whitespace-nowrap dark:text-white">Kel Tunggulwulung, Kec Lowokwaru,</span>
+            <br>
+            <span class="self-center text-sm whitespace-nowrap dark:text-white">Kota Malang, 65143</span>
+            </div>
+            
+          </div>
+          <div class="ms-3 mt-4 flex flex-row">
+            <a href="mailto:samoircattery@gmail.com" class="text-gray-500 hover:text-secondary dark:hover:text-white me-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>              
+            </a>
+            <div class="ms-3">
+              <span class="self-center text-sm whitespace-nowrap dark:text-white">samoircattery@gmail.com</span>
+            </div>
+            
+          </div>
+            
         </div>
         <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Toko Online</h2>
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                        <a href="https://tokopedia.com/" class="hover:underline hover:text-secondary">Tokopedia</a>
+                        <a href="/about" class="hover:underline hover:text-secondary">About Us</a>
                     </li>
                     <li>
-                        <a href="https://shopee.com/" class="hover:underline hover:text-secondary" >Shopee</a>
+                        <a href="https://api.whatsapp.com/send/?phone=6281394944884&text&type=phone_number&app_absent=0" class="hover:underline hover:text-secondary" >Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -116,7 +157,7 @@
     
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
     <div class="sm:flex sm:items-center sm:justify-between">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" class="hover:underline">Samoir Cattery</a>. All Rights Reserved.
         </span>
         <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
             <a href="https://api.whatsapp.com/send/?phone=6281394944884&text&type=phone_number&app_absent=0" class="text-gray-500 hover:text-secondary dark:hover:text-white">
@@ -154,6 +195,7 @@
             </svg>
                 <span class="sr-only">Tiktok page</span>
             </a>
+            
         </div>
     </div>
   </div>
