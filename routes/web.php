@@ -40,12 +40,5 @@ Route::get('/why', function () {
 });
 
 Route::get('/collection',[ControllerRas::class,'showAllRases']);
+Route::get('/collection/{rase}',[ControllerRas::class,'getCatsWithID']);
 
-// Route::get('/collection', function () {
-//     return view('collection',
-//     [
-//         "pagetitle" => "Collections",
-//         "urlpage" => "/collection"
-//     ]
-// );
-// });
