@@ -14,6 +14,6 @@ class Rase extends Model
     ];
     public function cats(): HasMany
     {
-        return $this->hasMany(Cat::class,'ras_id');
+        return $this->hasMany(Cat::class, 'ras_id');
     }
 }

@@ -15,30 +15,53 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home',
-    [
-        "pagetitle" => "Home",
-        "urlpage" => "/"
-    ]
-);
+    return view(
+        'home',
+        [
+            "pagetitle" => "Home",
+            "urlpage" => "/"
+        ]
+    );
 });
 Route::get('/about', function () {
-    return view('about',
-    [
-        "pagetitle" => "About Us",
-        "urlpage" => "/about"
-    ]
-);
+    return view(
+        'about',
+        [
+            "pagetitle" => "About Us",
+            "urlpage" => "/about"
+        ]
+    );
 });
 Route::get('/why', function () {
-    return view('why',
-    [
-        "pagetitle" => "Why Samoir?",
-        "urlpage" => "/why"
-    ]
-);
+    return view(
+        'why',
+        [
+            "pagetitle" => "Why Samoir?",
+            "urlpage" => "/why"
+        ]
+    );
 });
 
-Route::get('/collection',[ControllerRas::class,'showAllRases']);
-Route::get('/collection/{rase}',[ControllerRas::class,'getCatsWithID']);
+Route::get('/privacy', function () {
+    return view(
+        'privacy',
+        [
+            "pagetitle" => "Privacy Policy",
+            "urlpage" => "/privacy"
+        ]
+    );
+});
+
+Route::get('/terms', function () {
+    return view(
+        'terms',
+        [
+            "pagetitle" => "Terms & Conditions",
+            "urlpage" => "/terms"
+        ]
+    );
+});
+
+Route::get('/collection', [ControllerRas::class, 'showAllRases']);
+Route::get('/collection/{rase}', [ControllerRas::class, 'getCatsWithID']);
 
