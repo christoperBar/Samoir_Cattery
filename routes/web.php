@@ -62,6 +62,26 @@ Route::get('/terms', function () {
     );
 });
 
+Route::get('/catndip', function () {
+    return view(
+        'catndip',
+        [
+            "pagetitle" => "CatnDip",
+            "urlpage" => "/catndip"
+        ]
+    );
+});
+
+Route::get('/nomnomenergy', function () {
+    return view(
+        'nomnomenergy',
+        [
+            "pagetitle" => "NomNomEnergy",
+            "urlpage" => "/nomnomenergy"
+        ]
+    );
+});
+
 Route::get('/collection', [ControllerRas::class, 'showAllRases']);
 Route::get('/collection/{rase}', [ControllerRas::class, 'getCatsWithID']);
 

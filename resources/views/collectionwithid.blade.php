@@ -3,6 +3,11 @@
 @section('layout_content')
     <div class=" px-6 pt-2 pb-6 sm:pt-2 sm:pb-6 sm:px-20">
         <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+            <li class="mr-2">
+                <a href="/collection"
+                    class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+                    aria-current="page">All</a>
+            </li>
             @foreach ($rases as $index => $ras)
                 @if ($ras->id == $active)
                     <li class="mr-2">
@@ -23,7 +28,7 @@
     <div class="px-6 pt-2 pb-6 sm:pt-2 sm:pb-6 sm:px-20 gap-x-10 gap-y-20 lg:px-8 flex flex-wrap ">
         @foreach ($cats as $index => $cat)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img class="rounded-t-lg" src="{{ $cat->cat_photo }}" alt="" />
+                <img class="rounded-t-lg h-60 w-96" src="{{ $cat->cat_photo }}" alt="" />
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $cat->cat_name }}
                     </h5>
