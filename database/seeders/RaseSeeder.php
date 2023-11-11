@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RaseSeeder extends Seeder
 {
@@ -15,6 +14,15 @@ class RaseSeeder extends Seeder
     {
         DB::table("rases")->insert([
             'ras_name' => 'Scottish Fold'
+        ]);
+        DB::table("rases")->insert([
+            'ras_name' => 'Scottish Straight'
+        ]);
+        DB::table("rases")->insert([
+            'ras_name' => 'British Short Hair'
+        ]);
+        DB::table("rases")->insert([
+            'ras_name' => 'Devon Rex'
         ]);
     }
 }

@@ -12,7 +12,7 @@
             </div>
             <div class="max-h-72 max-w-2xl">
                 <img class="h-full w-full rounded-lg object-cover drop-shadow-lg"
-                    src="https://scontent.fsub16-1.fna.fbcdn.net/v/t39.30808-6/367495419_2016010965427483_2736525643115593352_n.jpg?stp=cp6_dst-jpg&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=VtSysCpXP-sAX_k-2OE&_nc_ht=scontent.fsub16-1.fna&oh=00_AfBLd1Lx-ElIW66uHB27mx4v9n4WRXjn_PkjsQnr-sVEYA&oe=6547A969"
+                    src="https://i.imgur.com/MuikBro.jpeg"
                     alt="image description">
             </div>
         </div>
@@ -22,7 +22,7 @@
         <div class="mx-auto grid max-w-7xl gap-x-24 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
             <div class="max-h-96 max-w-2xl">
                 <img class="h-full w-full rounded-lg object-cover drop-shadow-lg"
-                    src="https://scontent.fsub16-1.fna.fbcdn.net/v/t39.30808-6/293576047_1730831777278738_4312544913109303852_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGBdcgPAWGUSjjlhTm01lZRQ47EdnG-lWhDjsR2cb6VaPgdJIvGS1cRQ9NzdvktnBShfhxYP1cZ5nQwlTa9Jd2f&_nc_ohc=8Z8onKNGQ_gAX-BeyUy&_nc_ht=scontent.fsub16-1.fna&oh=00_AfD0r-bqWAzEbZkDoTM1fDTwvBvxjudsEJKFkpILv6fIaA&oe=65473140"
+                    src="https://i.imgur.com/2D8hsDU.jpeg"
                     alt="image description">
             </div>
             <div class="max-w-2xl">
