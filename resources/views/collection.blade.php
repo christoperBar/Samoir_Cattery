@@ -20,7 +20,7 @@
     <div class="px-6 pt-2 pb-6 sm:pt-2 sm:pb-6 sm:px-20 gap-x-10 gap-y-20 lg:px-8 flex flex-wrap ">
         @foreach ($cats as $index => $cat)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img class="rounded-t-lg h-60 w-96" src="{{ $cat->cat_photo }}" alt="" />
+                <img class="rounded-t-lg h-60 w-96 object-cover" src="{{ $cat->cat_photo }}" alt="" />
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $cat->cat_name }}
                     </h5>
