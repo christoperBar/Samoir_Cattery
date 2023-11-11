@@ -16,7 +16,8 @@ class Cat extends Model
         'ras_id',
     ];
 
-    public function ras() {
+    public function ras()
+    {
         return $this->belongsTo(Rase::class, 'ras_id');
     }
 }
