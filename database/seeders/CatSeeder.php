@@ -17,6 +17,8 @@ class CatSeeder extends Seeder
             'birthday' => '2 Juli 2022',
             'color'=> 'White and Blue',
             'cat_photo'=> 'https://i.imgur.com/VOlsmjz.png',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '3',
         ]);
         DB::table("cats")->insert([
@@ -24,6 +26,8 @@ class CatSeeder extends Seeder
             'birthday' => '12 Desember 2022',
             'color'=> 'Gray',
             'cat_photo'=> 'https://i.imgur.com/mmwLxkJ.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '3',
         ]);
         DB::table("cats")->insert([
@@ -31,6 +35,8 @@ class CatSeeder extends Seeder
             'birthday' => '9 Januari 2023',
             'color'=> 'Golden White',
             'cat_photo'=> 'https://i.imgur.com/FSkd7gb.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '1',
         ]);
         DB::table("cats")->insert([
@@ -38,6 +44,8 @@ class CatSeeder extends Seeder
             'birthday' => '17 Mei 2023',
             'color'=> 'Golden Brown',
             'cat_photo'=> 'https://i.imgur.com/CUt04gG.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '4',
         ]);
         DB::table("cats")->insert([
@@ -45,6 +53,8 @@ class CatSeeder extends Seeder
             'birthday' => '11 Januari 2023',
             'color'=> 'Golden White',
             'cat_photo'=> 'https://i.imgur.com/hYIYCz0.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '1',
         ]);
         DB::table("cats")->insert([
@@ -52,6 +62,8 @@ class CatSeeder extends Seeder
             'birthday' => '29 July 2023',
             'color'=> 'Golden White',
             'cat_photo'=> 'https://i.imgur.com/j1baEj9.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '2',
         ]);
         DB::table("cats")->insert([
@@ -59,6 +71,8 @@ class CatSeeder extends Seeder
             'birthday' => '28 Februari 2023',
             'color'=> 'White',
             'cat_photo'=> 'https://i.imgur.com/9P6TuN6.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '1',
         ]);
         DB::table("cats")->insert([
@@ -66,6 +80,8 @@ class CatSeeder extends Seeder
             'birthday' => '9 Januari 2023',
             'color'=> 'Golden Brown',
             'cat_photo'=> 'https://i.imgur.com/z5X1AUl.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '3',
         ]);
         DB::table("cats")->insert([
@@ -73,6 +89,8 @@ class CatSeeder extends Seeder
             'birthday' => '17 September 2023',
             'color'=> 'Golden White',
             'cat_photo'=> 'https://i.imgur.com/nko4BYv.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '1',
         ]);
         DB::table("cats")->insert([
@@ -80,6 +98,8 @@ class CatSeeder extends Seeder
             'birthday' => '5 Oktober 2023',
             'color'=> 'White and Blue',
             'cat_photo'=> 'https://i.imgur.com/4JI0OhK.jpeg',
+            'can_adopt'=> 'yes',
+            'maturity' => 'adult',
             'ras_id'=> '3',
         ]);
     }
