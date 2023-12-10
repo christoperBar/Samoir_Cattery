@@ -13,7 +13,11 @@ class Cat extends Model
         'birthday',
         'color',
         'cat_photo',
+        'can_adopt',
+        'maturity',
+        'gender',
         'ras_id',
+
     ];
 
     public function ras()

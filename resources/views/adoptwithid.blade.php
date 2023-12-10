@@ -4,17 +4,27 @@
     <div class=" px-6 pt-2 pb-6 sm:pt-2 sm:pb-6 sm:px-20">
         <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
             <li class="mr-2">
-                <a href="/collection" class="inline-block px-4 py-3 text-white bg-secondary rounded-lg active"
+                <a href="/adopt"
+                    class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
                     aria-current="page">All</a>
             </li>
             @foreach ($rases as $index => $ras)
-                <li class="mr-2">
-                    <a href="/collection/{{ $ras->id }}"
-                        class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">{{ $ras->ras_name }}</a>
-                </li>
+                @if ($ras->id == $active)
+                    <li class="mr-2">
+                        <a href="/adopt/{{ $ras->id }}"
+                            class="inline-block px-4 py-3 text-white bg-secondary rounded-lg active"
+                            aria-current="page">{{ $ras->ras_name }}</a>
+                    </li>
+                @else
+                    <li class="mr-2">
+                        <a href="/adopt/{{ $ras->id }}"
+                            class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">{{ $ras->ras_name }}</a>
+                    </li>
+                @endif
             @endforeach
         </ul>
     </div>
+
 
     {{-- admin --}}
     <div class="flex flex-col space-y-4 sm:flex-row sm:px-20 px-6 pt-2 pb-6">
@@ -41,11 +51,14 @@
                     <p class="font-normal text-gray-700 dark:text-gray-400">Color: {{ $cat->color }}</p>
                     <p class="font-normal text-gray-700 dark:text-gray-400">Ras: {{ $cat->ras->ras_name }}</p>
                     <p class="font-normal text-gray-700 dark:text-gray-400">Maturity: {{ $cat->maturity }}</p>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Gender: {{ $cat->gender }}</p>
                     <br>
 
-                    {{-- Admin --}}
                     <div class="flex flex-col sm:flex-row pt-2 pb-6 ">
+                        <a href="#" class="inline-flex items-center px-3 py-2 mx-1 my-2 text-sm font-medium text-center text-white bg-secondary rounded-lg hover:bg-primary focus:ring-4 focus:outline-none">
+                            Adopt Now
+                        </a>
+
+                        {{-- Admin --}}
                         <a href="/updatecatform/{{ $cat->id }}" class="inline-flex items-center px-3 py-2 mx-1 my-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
@@ -67,6 +80,9 @@
 
 
                     </div>
+                    
+
+
                 </div>
             </div>
         @endforeach

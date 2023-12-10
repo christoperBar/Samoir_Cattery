@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ControllerRas;
+use App\Http\Controllers\ControllerTeam;
+use App\Http\Controllers\ControllerCat;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,15 +25,9 @@ Route::get('/', function () {
         ]
     );
 });
-Route::get('/about', function () {
-    return view(
-        'about',
-        [
-            "pagetitle" => "About Us",
-            "urlpage" => "/about"
-        ]
-    );
-});
+
+Route::get('/about', [ControllerTeam::class, 'showAllTeam']);
+
 Route::get('/why', function () {
     return view(
         'why',
@@ -85,3 +81,26 @@ Route::get('/nomnomenergy', function () {
 Route::get('/collection', [ControllerRas::class, 'showAllRases']);
 Route::get('/collection/{rase}', [ControllerRas::class, 'getCatsWithID']);
 
+Route::get('/adopt', [ControllerRas::class, 'showAllRasesCanAdopt']);
+Route::get('/adopt/{rase}', [ControllerRas::class, 'getCatsWithIDCanAdopt']);
+
+
+Route::get('/addcatform', [ControllerCat::class, 'createCatForm']);
+Route::post('/addcat', [ControllerCat::class, 'createCat']);
+Route::delete('/deletecat/{catid}', [ControllerCat::class, 'deleteCat']);
+Route::get('/updatecatform/{catid}', [ControllerCat::class, 'updateCatForm']);
+Route::put('/updatecat/{catid}', [ControllerCat::class, 'updateCat']);
+
+
+Route::get('/addteamform',function(){
+    return view('addteamform',
+    [
+        "pagetitle" => "Add Teams",
+        "urlpage" => "/addteamform"
+    ]
+);
+});
+Route::post('/addteam', [ControllerTeam::class, 'createTeam']);
+Route::delete('/deleteteam/{teamid}', [ControllerTeam::class, 'deleteTeam']);
+Route::get('/updateteamform/{teamid}', [ControllerTeam::class, 'updateTeamForm']);
+Route::put('/updateteam/{teamid}', [ControllerTeam::class, 'updateTeam']);

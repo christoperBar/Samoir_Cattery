@@ -14,92 +14,102 @@ class CatSeeder extends Seeder
     {
         DB::table("cats")->insert([
             'cat_name' => 'Abimanyu',
-            'birthday' => '2 Juli 2022',
+            'birthday' => '07/02/2022',
             'color'=> 'White and Blue',
             'cat_photo'=> 'https://i.imgur.com/VOlsmjz.png',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'jantan',
             'ras_id'=> '3',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'Arjuna',
-            'birthday' => '12 Desember 2022',
+            'birthday' => '12/12/2022',
             'color'=> 'Gray',
             'cat_photo'=> 'https://i.imgur.com/mmwLxkJ.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'jantan',
             'ras_id'=> '3',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'I Am Groot',
-            'birthday' => '9 Januari 2023',
+            'birthday' => '01/09/2023',
             'color'=> 'Golden White',
             'cat_photo'=> 'https://i.imgur.com/FSkd7gb.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'jantan',
             'ras_id'=> '1',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'Baby Yoda',
-            'birthday' => '17 Mei 2023',
+            'birthday' => '05/17/2023',
             'color'=> 'Golden Brown',
             'cat_photo'=> 'https://i.imgur.com/CUt04gG.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'jantan',
             'ras_id'=> '4',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'Boombayah',
-            'birthday' => '11 Januari 2023',
+            'birthday' => '01/11/2023',
             'color'=> 'Golden White',
             'cat_photo'=> 'https://i.imgur.com/hYIYCz0.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'betina',
             'ras_id'=> '1',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'Mango Sticky Rice',
-            'birthday' => '29 July 2023',
+            'birthday' => '07/29/2023',
             'color'=> 'Golden White',
             'cat_photo'=> 'https://i.imgur.com/j1baEj9.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'jantan',
             'ras_id'=> '2',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'Jennie',
-            'birthday' => '28 Februari 2023',
+            'birthday' => '02/28/2023',
             'color'=> 'White',
             'cat_photo'=> 'https://i.imgur.com/9P6TuN6.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'betina',
             'ras_id'=> '1',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'Raras',
-            'birthday' => '9 Januari 2023',
+            'birthday' => '01/09/2023',
             'color'=> 'Golden Brown',
             'cat_photo'=> 'https://i.imgur.com/z5X1AUl.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'betina',
             'ras_id'=> '3',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'Winky',
-            'birthday' => '17 September 2023',
+            'birthday' => '09/17/2023',
             'color'=> 'Golden White',
             'cat_photo'=> 'https://i.imgur.com/nko4BYv.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'jantan',
             'ras_id'=> '1',
         ]);
         DB::table("cats")->insert([
             'cat_name' => 'Rocky',
-            'birthday' => '5 Oktober 2023',
+            'birthday' => '10/05/2023',
             'color'=> 'White and Blue',
             'cat_photo'=> 'https://i.imgur.com/4JI0OhK.jpeg',
             'can_adopt'=> 'yes',
             'maturity' => 'adult',
+            'gender' => 'jantan',
             'ras_id'=> '3',
         ]);
     }

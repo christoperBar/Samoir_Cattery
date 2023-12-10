@@ -8,7 +8,7 @@
                 <p class="mt-6 text-lg leading-8 text-gray-600"> CatNDip adalah destinasi utama Anda untuk layanan grooming
                     kucing profesional. Kami memahami kebutuhan unik teman kucing Anda dan menyediakan pengalaman grooming
                     tanpa stres. Tim groomer kami yang terampil berdedikasi untuk memastikan kucing Anda terlihat dan merasa
-                    yang terbaik, meningkatkan kesejahteraan mereka secara keseluruhan. .</p>
+                    yang terbaik, meningkatkan kesejahteraan mereka secara keseluruhan.</p>
                     <br>
 
                     <button type="button" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"><a href="https://api.whatsapp.com/send/?phone=6281394944884&text&type=phone_number&app_absent=0">Pesan Sekarang</a></button>

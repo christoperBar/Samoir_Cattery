@@ -34,4 +34,32 @@ class ControllerRas extends Controller
             "active" => $id
         ]);
     }
+
+    function showAllRasesCanAdopt()
+    {
+        $allCats = Cat::where('can_adopt' , 'yes')->get()->sortBy('cat_name');
+        $allRases = Rase::all()->sortBy('ras_name');
+
+        return view('adopt', [
+            'rases' => $allRases,
+            'cats' => $allCats,
+            "pagetitle" => "Adopt",
+            "urlpage" => "/adopt"
+        ]);
+    }
+
+    function getCatsWithIDCanAdopt(int $id)
+    {
+        $allRases = Rase::all()->sortBy('ras_name');
+        $rase = Rase::find($id);
+        $cat = $rase->cats()->where('can_adopt', 'yes')->get()->sortBy('cat_name');
+
+        return view('adoptwithid', [
+            'rases' => $allRases,
+            'cats' => $cat,
+            "pagetitle" => "Adopt",
+            "urlpage" => "/adopt",
+            "active" => $id
+        ]);
+    }
 }

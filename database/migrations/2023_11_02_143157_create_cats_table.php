@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('cat_photo')->nullable();
             $table->enum('can_adopt', ['yes', 'no'])->default('no');
             $table->enum('maturity', ['kitten', 'adult'])->default('kitten');
+            $table->enum('gender', ['jantan', 'betina'])->default('jantan');
             $table->foreignId('ras_id')->constrained('rases');
             $table->timestamps();
         });
