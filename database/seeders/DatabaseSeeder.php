@@ -23,7 +23,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RaseSeeder::class,
             CatSeeder::class,
-            TeamSeeder::class
+            TeamSeeder::class,
+            CertificationSeeder::class,
+            EventSeeder::class
         ]);
     }
     

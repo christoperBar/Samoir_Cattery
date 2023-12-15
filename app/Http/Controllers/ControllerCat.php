@@ -15,7 +15,7 @@ class ControllerCat extends Controller
         $newcat = $request->validate([
             'cat_name'=>'required',
             'color' => 'required',
-            'can_adopt' => 'required',
+            'is_adoptable' => 'required',
             'ras_id' => 'required',
             'maturity' => 'required',
             'gender' => 'required',
@@ -23,10 +23,11 @@ class ControllerCat extends Controller
             'cat_photo' =>'required|mimes:jpeg,jpg,png|max:1000',
         ]);
 
+        
         $cat = Cat::create([
             'cat_name'=> $newcat['cat_name'],
             'color' => $newcat['color'],
-            'can_adopt' => $newcat['can_adopt'],
+            'is_adoptable' => $newcat['is_adoptable'] == "1",
             'ras_id' => $newcat['ras_id'],
             'maturity' => $newcat['maturity'],
             'gender' => $newcat['gender'],
@@ -80,7 +81,7 @@ class ControllerCat extends Controller
         $updatedcat = $request->validate([
             'cat_name'=>'required',
             'color' => 'required',
-            'can_adopt' => 'required',
+            'is_adoptable' => 'required',
             'ras_id' => 'required',
             'maturity' => 'required',
             'gender' => 'required',
@@ -90,7 +91,7 @@ class ControllerCat extends Controller
         ]);
         $cat->cat_name = $updatedcat['cat_name'];
         $cat->color = $updatedcat['color'];
-        $cat->can_adopt = $updatedcat['can_adopt'];
+        $cat->is_adoptable = $updatedcat['is_adoptable']=="1";
         $cat->ras_id = $updatedcat['ras_id'];
         $cat->maturity = $updatedcat['maturity'];
         $cat->gender = $updatedcat['gender'];

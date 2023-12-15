@@ -11,6 +11,7 @@ export default {
       'primary': '#4F4E4B',
       'secondary': '#E0AC51',
       'secondary100' : "#ECCB92",
+      'edit' : '#2d59b3',
     },
   },
   plugins: [

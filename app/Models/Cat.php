@@ -13,7 +13,7 @@ class Cat extends Model
         'birthday',
         'color',
         'cat_photo',
-        'can_adopt',
+        'is_adoptable',
         'maturity',
         'gender',
         'ras_id',
@@ -23,5 +23,20 @@ class Cat extends Model
     public function ras()
     {
         return $this->belongsTo(Rase::class, 'ras_id');
+    }
+
+    public function child_tree()
+    {
+        return $this->hasOne(Child_tree::class, 'cat_child');
+    }
+
+    public function toms()
+    {
+        return $this->hasMany(Parent_tree::class, 'tom_id');
+    }
+
+    public function tabbies()
+    {
+        return $this->hasMany(Parent_tree::class, 'tabby_id');
     }
 }

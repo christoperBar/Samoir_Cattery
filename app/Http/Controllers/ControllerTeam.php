@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\Certification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 class ControllerTeam extends Controller
@@ -10,9 +11,11 @@ class ControllerTeam extends Controller
     function showAllTeam()
     {
         $allTeams = Team::all();
+        $allCertificate = Certification::all();
 
         return view('about', [
             'teams' => $allTeams,
+            'certificates' => $allCertificate,
             "pagetitle" => "About Us",
             "urlpage" => "/about"
         ]);

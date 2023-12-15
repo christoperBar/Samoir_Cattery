@@ -8,6 +8,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $pagetitle }}</title>
     <link rel="icon" href="https://i.imgur.com/lKnYFDA.png">
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.slim.js"
+            integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+            crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
 </head>
 
@@ -63,6 +68,16 @@
                             @else
                                 <a href="/adopt"
                                     class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 dark:text-white md:dark:hover:text-secondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Adopt</a>
+                            @endif
+                        </li>
+                        <li>
+                            @if ($urlpage == '/event')
+                                <a href="/event"
+                                    class="block py-2 pl-3 pr-4 text-gray-900 rounded bg-secondary md:bg-transparent md:text-secondary md:p-0 md:dark:text-secondary dark:bg-secondary md:dark:bg-transparent"
+                                    aria-current="page">Event</a>
+                            @else
+                                <a href="/event"
+                                    class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 dark:text-white md:dark:hover:text-secondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Event</a>
                             @endif
                         </li>
 

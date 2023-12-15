@@ -37,7 +37,7 @@ class ControllerRas extends Controller
 
     function showAllRasesCanAdopt()
     {
-        $allCats = Cat::where('can_adopt' , 'yes')->get()->sortBy('cat_name');
+        $allCats = Cat::where('is_adoptable', true)->get()->sortBy('cat_name');
         $allRases = Rase::all()->sortBy('ras_name');
 
         return view('adopt', [
@@ -52,7 +52,7 @@ class ControllerRas extends Controller
     {
         $allRases = Rase::all()->sortBy('ras_name');
         $rase = Rase::find($id);
-        $cat = $rase->cats()->where('can_adopt', 'yes')->get()->sortBy('cat_name');
+        $cat = $rase->cats()->where('is_adoptable', true)->get()->sortBy('cat_name');
 
         return view('adoptwithid', [
             'rases' => $allRases,
@@ -61,5 +61,17 @@ class ControllerRas extends Controller
             "urlpage" => "/adopt",
             "active" => $id
         ]);
+    }
+
+    function createRas(Request $request)
+    {
+        $newras = $request->validate([
+            'ras_name'=>'required',
+        ]);
+
+        Rase::create($newras);
+        return redirect('/collection');
+
+
     }
 }

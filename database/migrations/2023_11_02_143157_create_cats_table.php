@@ -16,10 +16,10 @@ return new class extends Migration {
             $table->string('birthday');
             $table->string('color');
             $table->string('cat_photo')->nullable();
-            $table->enum('can_adopt', ['yes', 'no'])->default('no');
+            $table->boolean('is_adoptable');
             $table->enum('maturity', ['kitten', 'adult'])->default('kitten');
             $table->enum('gender', ['jantan', 'betina'])->default('jantan');
-            $table->foreignId('ras_id')->constrained('rases');
+            $table->foreignId('ras_id')->constrained('rases')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
