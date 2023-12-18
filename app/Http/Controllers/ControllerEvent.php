@@ -60,4 +60,67 @@ class ControllerEvent extends Controller
 
         return redirect('/event');
     }
+
+    function updateEventForm(string $eventid){
+        $event = Event::find($eventid);
+
+        return view('updateevent', [
+            "event"=> $event,
+            "pagetitle"=> "Update Event",
+            "urlpage"=> "/updateeventform"
+        ]);
+    }
+
+    function updateEvent(Request $request, string $eventid){
+        $event = Event::find($eventid);
+
+        $updatedevent = $request->validate([
+            'event_name'=>'required',
+            'time' => 'required',
+            'location' => 'required',
+            'descriptions' => 'required',
+            'status' => 'required',
+            'event_photo' =>'required|mimes:jpeg,jpg,png|max:1000',
+        ]);
+
+        $tanggal = $updatedevent['time'];
+
+        $carbon = Carbon::createFromFormat('m/d/Y', $tanggal);
+        Carbon::setLocale('id');
+        $format = 'l, d F Y';
+
+        $event-> event_name = $updatedevent['event_name'];
+        $event-> time = $carbon->format($format);
+        $event-> location = $updatedevent['location'];
+        $event-> descriptions = $updatedevent['descriptions'];
+        $event-> status = $updatedevent['status'];
+
+        if($request['event_photo']){
+            $gambar = $request->file('event_photo');
+            $path = '/storage/'. $gambar->storePublicly('event_images/', 'public');
+            $imagePath = str_replace("/storage/",'',$event->event_photo);
+            $event->event_photo = $path;
+            if($event->save()){
+                Storage::disk('public')->delete($imagePath);
+            }
+            return redirect('/event');
+            
+        }
+        $event->save();
+        return redirect('/event');
+        
+    }
+
+    function deleteEvent(string $eventid){
+        $event = Event::find($eventid);
+
+        $imagePath = str_replace("/storage/",'',$event->event_photo);
+
+        Storage::disk('public')->delete($imagePath);
+
+        $event -> delete();
+
+        return redirect('/event');
+
+    }
 }

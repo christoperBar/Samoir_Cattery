@@ -4,16 +4,18 @@
     <br>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add new event</h2>
-            <form method="POST" action="/addevent" enctype="multipart/form-data">
+            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Update Event</h2>
+            <form method="POST" action="/updateevent/{{ $event->id }}" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
+                
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="">
                         <label for="event_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Event Name</label>
                         <input type="text" name="event_name" id="event_name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Type your certificate name" required="">
+                            value="{{$event -> event_name}}" placeholder="Type your event name" required="">
                     </div>
                     <div>
                         <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
@@ -38,21 +40,21 @@
                         </div>
                         <input datepicker type="text" id="time" name="time"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-secondary dark:focus:border-secondary"
-                            placeholder="Select date" required="">
+                            value="{{$event -> time}}" placeholder="Select date" required="">
                     </div>
                     
                     
                     <div class="w-full">
                         <label for="location"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
-                        <input type="text" name="location" id="location" placeholder="Pakuwon City Mall Surabaya"
+                        <input type="text" name="location" id="location" value="{{$event -> location}}" placeholder="Pakuwon City Mall Surabaya"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             >
                     </div>
 
                     <div class="mb-6 sm:col-span-2">
                         <label for="descriptions" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                        <input type="text" id="descriptions" name="descriptions" placeholder="Description" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="descriptions" name="descriptions" value="{{$event-> descriptions}}" placeholder="Description" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
 
                     <div class="flex items-center justify-center w-full sm:col-span-2">
@@ -71,7 +73,7 @@
                 </div>
                 <button type="submit"
                     class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-secondary rounded-lg focus:ring-4 hover:bg-primary">
-                    Add Event
+                    Update Event
                 </button>
             </form>
         </div>

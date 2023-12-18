@@ -184,4 +184,8 @@ Route::get('/addevent',function(){
 );
 });
 Route::post('/addevent', [ControllerEvent::class, 'createevent']);
+Route::get('/updateeventform/{eventid}', [ControllerEvent::class, 'updateEventForm']);
+Route::put('/updateevent/{eventid}', [ControllerEvent::class, 'updateEvent']);
+Route::delete('/deleteevent/{eventid}', [ControllerEvent::class, 'deleteEvent']);
+
 
