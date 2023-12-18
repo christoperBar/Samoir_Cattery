@@ -51,4 +51,31 @@ class ControllerNomnomenergytransactions extends Controller
         $transaction->delete();
         return redirect('/nomnomtransactions');
     }
+
+    function createorder(Request $request){
+        $newtransaction = $request->validate([
+            'buyer'=>'required',
+            'buyer_contact'=>'required',
+            'quantity' => 'required',
+        ]);
+
+        $transaction = Nomnomenergytransaction::create([
+            'buyer'=> $newtransaction['buyer'],
+            'buyer_contact' => $newtransaction['buyer_contact'],
+            'quantity' => $newtransaction['quantity'],
+            'status' => 'pending',
+            'total' => $newtransaction['quantity'] * 100000
+        ]);
+
+
+        $transaction->save();
+
+        $buyer = $newtransaction['buyer'];
+        $jumlah = $newtransaction['quantity'];
+        
+        $url = 'https://api.whatsapp.com/send?phone=6282244838463&text=Permisi%20kak%2C%20saya%20' . $buyer . '%20ingin%20memesan%20NomNomEnergy%20sebanyak%20' . $jumlah . 'pcs.';
+        
+        return redirect($url);
+    }
+    
 }

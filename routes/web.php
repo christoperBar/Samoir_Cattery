@@ -160,6 +160,15 @@ Route::get('/addnomnomtransactionsform',function(){
     ]
 );
 });
+Route::get('/ordernomnom',function(){
+    return view('ordernomnom',
+    [
+        "pagetitle" => "Order",
+        "urlpage" => "/ordernomnom"
+    ]
+);
+});
+Route::post('/ordernomnomtransaction', [ControllerNomnomenergytransactions::class, 'createorder']);
 Route::post('/addnomnomtransaction', [ControllerNomnomenergytransactions::class, 'createtransaction']);
 Route::put('/changenomnompstatus{nomnomid}', [ControllerNomnomenergytransactions::class, 'updatestatus']);
 Route::delete('/deletenomnomtransaction/{catndipid}',[ControllerNomnomenergytransactions::class, 'deletetransaction']);
