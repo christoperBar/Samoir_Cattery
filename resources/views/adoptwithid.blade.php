@@ -25,20 +25,19 @@
         </ul>
     </div>
 
-
     {{-- admin --}}
-    <div class="flex flex-col space-y-4 sm:flex-row sm:px-20 px-6 pt-2 pb-6">
-        <a href="/addcatform"
+    <div class="flex flex-col space-y-4 sm:flex-col pb-6 mx-10">
+        
+        <a href="/addadopttransaction"
             class="flex items-center justify-center text-white bg-secondary hover:bg-primary focus:ring-4 focus:ring-primary font-medium rounded-lg text-sm px-4 py-2 dark:bg-secondary dark:hover:bg-primary focus:outline-none dark:focus:ring-primary">
             <svg class="h-3.5 w-3.5 mr-1.5 -ml-1" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
                 <path clip-rule="evenodd" fill-rule="evenodd"
                     d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
             </svg>
-            Add Cat
+            Add Adopt Transactions
         </a>
     </div>
-    <br>
 
     <div class="px-6 pt-2 pb-6 sm:pt-2 sm:pb-6 sm:px-20 gap-x-10 gap-y-20 lg:px-8 flex flex-wrap ">
         @foreach ($cats as $index => $cat)

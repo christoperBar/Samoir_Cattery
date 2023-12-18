@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cat;
 use App\Models\Rase;
+use App\Models\Cattransaction;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+
 
 class ControllerCat extends Controller
 {
@@ -112,5 +114,34 @@ class ControllerCat extends Controller
         return redirect('/collection');
         
         
+    }
+
+    function adoptCatWithID(){
+        $cats = Cat::where('is_adoptable', true)->where('is_available', true)->get()->sortBy('cat_name');
+        
+        return view('addadopttransaction',
+    [
+        "cats" => $cats,
+        "pagetitle" => "Add Adopt Transactions",
+        "urlpage" => "/addadopttransaction"
+    ]);
+    }
+
+    function createAdoptTransaction(Request $request){
+        $newtransaction = $request->validate([
+            'adopter'=>'required',
+            'adopter_contact'=>'required',
+            'cat_id'=>'required',
+            'status'=>'required',
+            'total'=>'required',
+        ]);
+
+        if($newtransaction['status'] == "success"){
+            $cat = Cat::find($newtransaction['cat_id']);
+            $cat->is_available = false;
+            $cat->save();
+        };
+        Cattransaction::create($newtransaction);
+        return redirect('/adopt');
     }
 }

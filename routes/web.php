@@ -188,4 +188,9 @@ Route::get('/updateeventform/{eventid}', [ControllerEvent::class, 'updateEventFo
 Route::put('/updateevent/{eventid}', [ControllerEvent::class, 'updateEvent']);
 Route::delete('/deleteevent/{eventid}', [ControllerEvent::class, 'deleteEvent']);
 
+//CRUD Adopt Transactions
+Route::get('/addadopttransaction', [ControllerCat::class, 'adoptCatWithID']);
+Route::post('/addadopttransaction', [ControllerCat::class, 'createAdoptTransaction']);
+
+
 

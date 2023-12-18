@@ -10,7 +10,7 @@ class ControllerRas extends Controller
 {
     function showAllRases()
     {
-        $allCats = Cat::all()->sortBy('cat_name');
+        $allCats = Cat::where('is_available', true)->get()->sortBy('cat_name');
         $allRases = Rase::all()->sortBy('ras_name');
 
         return view('collection', [
@@ -24,7 +24,8 @@ class ControllerRas extends Controller
     function getCatsWithID(int $id)
     {
         $allRases = Rase::all()->sortBy('ras_name');
-        $cat = Rase::find($id)->cats->sortBy('cat_name');
+        $rase = Rase::find($id);
+        $cat = $rase->cats()->where('is_available', true)->get()->sortBy('cat_name');
 
         return view('collectionwithid', [
             'rases' => $allRases,
@@ -37,10 +38,11 @@ class ControllerRas extends Controller
 
     function showAllRasesCanAdopt()
     {
-        $allCats = Cat::where('is_adoptable', true)->get()->sortBy('cat_name');
+        $allCats = Cat::where('is_adoptable', true)->where('is_available', true)->get()->sortBy('cat_name');
         $allRases = Rase::all()->sortBy('ras_name');
 
-        return view('adopt', [
+        return view('adopt', 
+        [
             'rases' => $allRases,
             'cats' => $allCats,
             "pagetitle" => "Adopt",
@@ -52,9 +54,10 @@ class ControllerRas extends Controller
     {
         $allRases = Rase::all()->sortBy('ras_name');
         $rase = Rase::find($id);
-        $cat = $rase->cats()->where('is_adoptable', true)->get()->sortBy('cat_name');
+        $cat = $rase->cats()->where('is_adoptable', true)->where('is_available',true)->get()->sortBy('cat_name');
 
-        return view('adoptwithid', [
+        return view('adoptwithid', 
+        [
             'rases' => $allRases,
             'cats' => $cat,
             "pagetitle" => "Adopt",

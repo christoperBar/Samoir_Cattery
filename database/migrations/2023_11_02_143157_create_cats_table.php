@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('color');
             $table->string('cat_photo')->nullable();
             $table->boolean('is_adoptable');
+            $table->boolean('is_available')->default(true);
             $table->enum('maturity', ['kitten', 'adult'])->default('kitten');
             $table->enum('gender', ['jantan', 'betina'])->default('jantan');
             $table->foreignId('ras_id')->constrained('rases')->onUpdate('cascade')->onDelete('cascade');

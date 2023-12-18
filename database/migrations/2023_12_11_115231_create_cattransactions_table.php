@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('adopter');
             $table->string('adopter_contact');
             $table->enum('status', ['canceled', 'pending', 'success', 'expired'])->default('pending');
-            $table->decimal('total', 10,2);
+            $table->decimal('total', 15,2);
             $table->foreignId('cat_id')->constrained('cats')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
