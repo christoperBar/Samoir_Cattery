@@ -189,8 +189,10 @@ Route::put('/updateevent/{eventid}', [ControllerEvent::class, 'updateEvent']);
 Route::delete('/deleteevent/{eventid}', [ControllerEvent::class, 'deleteEvent']);
 
 //CRUD Adopt Transactions
+Route::get('/adopttransactions', [ControllerCat::class, 'showAlladopttransactions']);
 Route::get('/addadopttransaction', [ControllerCat::class, 'adoptCatWithID']);
 Route::post('/addadopttransaction', [ControllerCat::class, 'createAdoptTransaction']);
-
+Route::put('/changecatstatus{transactionid}', [ControllerCat::class, 'updatestatus']);
+Route::delete('/deletecattransaction/{transactionid}',[ControllerCat::class, 'deletetransaction']);
 
 

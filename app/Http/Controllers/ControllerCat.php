@@ -142,6 +142,49 @@ class ControllerCat extends Controller
             $cat->save();
         };
         Cattransaction::create($newtransaction);
-        return redirect('/adopt');
+        return redirect('/adopttransactions');
+    }
+
+    function showAlladopttransactions(Request $request){
+        if($request->has('search')){
+            $alltransactions = Cattransaction::where('adopter', 'like', '%'.$request->search.'%')->orWhere('status', 'like', '%'.$request->search.'%')->paginate(10)->withQueryString();
+        }
+        else{
+            $alltransactions = Cattransaction::orderBy('adopter', 'asc')->paginate(10);
+        }
+
+        return view('adopttransactions', [
+            'transactions' => $alltransactions,
+            "pagetitle" => "Transactions",
+            "urlpage" => "/adopttransactions"
+        ]);
+    }
+
+    function updatestatus(string $transactionid, Request $request){
+        $updatedstatus = $request->validate([
+            'status'=>'required',
+        ]);
+
+        $transaction = Cattransaction::find($transactionid);
+        if($updatedstatus['status'] == "success"){
+            $cat = Cat::find($transaction['cat_id']);
+            $cat->is_available = false;
+            $cat->save();
+        }
+        else{
+            $cat = Cat::find($transaction['cat_id']);
+            $cat->is_available = true;
+            $cat->save();
+        }
+        $transaction->status = $updatedstatus['status'];
+        $transaction->save();
+
+        return redirect('/adopttransactions');
+    }
+
+    function deletetransaction(string $transactionid){
+        $transaction = Cattransaction::find($transactionid);
+        $transaction->delete();
+        return redirect('/adopttransactions');
     }
 }
