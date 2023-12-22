@@ -4,7 +4,7 @@
 <div class=" px-6 pt-2 pb-6 sm:pt-2 sm:pb-6 sm:px-20">
     <h3 class="my-10 text-3xl font-bold dark:text-white">Our Events</h3>
 
-    {{-- admin --}}
+    @auth
     <div class="flex flex-col space-y-4 sm:flex-col pb-6 ">
         
         <a href="/addevent"
@@ -17,6 +17,7 @@
             Add Events
         </a>
     </div>
+    @endauth
 
     <form class="mb-10">   
         <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -56,6 +57,7 @@
     
                     <p class="text-gray-400 text-sm">{{ $event->time }}</p>
 
+                    @auth
                     <div class="flex flex-row">
                     <a href="/updateeventform/{{$event->id}}" class="inline-flex items-center px-3 py-2 mx-1 my-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -76,6 +78,7 @@
                         </button>
                     </form>
                 </div>
+                @endauth
                 </div>
                 
 

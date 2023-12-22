@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cat;
 use App\Models\Rase;
 use App\Models\Cattransaction;
+use App\Models\Catimage;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,7 @@ class ControllerCat extends Controller
             'maturity' => 'required',
             'gender' => 'required',
             'birthday'=>'required',
-            'cat_photo' =>'required|mimes:jpeg,jpg,png|max:1000',
+            'images.*' =>'required|mimes:jpeg,jpg,png|max:1000',
         ]);
 
         
@@ -36,11 +37,16 @@ class ControllerCat extends Controller
             'birthday'=> $newcat['birthday'],
         ]);
 
-        $gambar = $request->file('cat_photo');
-
-        $path = '/storage/'. $gambar->storePublicly('cat_images/', 'public');
-
-        $cat->cat_photo = $path;
+        if($request->hasfile('images')) {
+            foreach($request->file('images') as $file)
+            {
+                $path = '/storage/'. $file->storePublicly('cat_images/'.$cat->id, 'public');
+                $cat->catimages()->create([
+                    'cat_photo' => $path,
+                    'cat_id' => $cat->id
+                ]);
+            }
+        }
 
         $cat->save();
 
@@ -69,9 +75,11 @@ class ControllerCat extends Controller
     function updateCatForm(string $catid){
         $cat = Cat::find($catid);
         $rases = Rase::all()->sortBy('ras_name');
+        $catimages = Catimage::where('cat_id', $catid)->get();
         return view('updatecatform',[
             "rases" => $rases,
             "cat" => $cat,
+            "catimages" => $catimages,
             "pagetitle" => "Update Cat",
             "urlpage" => "/updatecatform"
         ]);
@@ -88,7 +96,6 @@ class ControllerCat extends Controller
             'maturity' => 'required',
             'gender' => 'required',
             'birthday'=>'required',
-            'cat_photo' =>'mimes:jpeg,jpg,png|max:25000',
             
         ]);
         $cat->cat_name = $updatedcat['cat_name'];
@@ -99,21 +106,41 @@ class ControllerCat extends Controller
         $cat->gender = $updatedcat['gender'];
         $cat->birthday = $updatedcat['birthday'];
 
-        if($request['cat_photo']){
-            $gambar = $request->file('cat_photo');
-            $path = '/storage/'. $gambar->storePublicly('cat_images/', 'public');
-            $imagePath = str_replace("/storage/",'',$cat->cat_photo);
-            $cat->cat_photo = $path;
-            if($cat->save()){
+        // if($request['cat_photo']){
+        //     $gambar = $request->file('cat_photo');
+        //     $path = '/storage/'. $gambar->storePublicly('cat_images/', 'public');
+        //     $imagePath = str_replace("/storage/",'',$cat->cat_photo);
+        //     $cat->cat_photo = $path;
+        //     if($cat->save()){
                 
-                Storage::disk('public')->delete($imagePath);
+        //         Storage::disk('public')->delete($imagePath);
+        //     }
+        //     return redirect('/collection');
+        // }
+        // $cat->save();
+        // return redirect('/collection');
+
+        if($request->hasfile('images')) {
+            $request->validate([
+                'images.*' =>'required|mimes:jpeg,jpg,png|max:1000',
+            ]);
+            $delete_catimg = Catimage::where('cat_id', $cat->id)->get();
+                foreach ($delete_catimg as $index => $catimg ) {
+                    $deletedImagePath = str_replace("/storage/",'',$catimg->cat_photo);
+                    Storage::disk('public')->delete($deletedImagePath);
+                    $catimg->delete();
+                }
+            foreach($request->file('images') as $file)
+            {
+                $path = '/storage/'. $file->storePublicly('cat_images/'.$cat->id, 'public');
+                $cat->catimages()->create([
+                    'cat_photo' => $path,
+                    'cat_id' => $cat->id
+                ]);
             }
-            return redirect('/collection');
         }
         $cat->save();
         return redirect('/collection');
-        
-        
     }
 
     function adoptCatWithID(){
@@ -186,5 +213,37 @@ class ControllerCat extends Controller
         $transaction = Cattransaction::find($transactionid);
         $transaction->delete();
         return redirect('/adopttransactions');
+    }
+
+    function showcatdetails(string $catid){
+        $cat = Cat::find($catid);
+        $catimages = Catimage::where('cat_id', $catid)->get();
+
+        return view('catdetails',
+        [
+        "cat" => $cat,
+        "catimages" => $catimages,
+        "pagetitle" => "Cat Details",
+        "urlpage" => "/catdetails"
+        ]);
+    }
+
+    function addmoreimages(string $catid, Request $request){
+        $newimages = $request->validate([
+            'images.*' =>'required|mimes:jpeg,jpg,png|max:1000',
+        ]);
+        $cat = Cat::find($catid);
+
+        foreach($request->file('images') as $file)
+        {
+            $path = '/storage/'. $file->storePublicly('cat_images/'.$cat->id, 'public');
+            $cat->catimages()->create([
+                'cat_photo' => $path,
+                'cat_id' => $cat->id
+            ]);
+        }
+        return back();
+
+
     }
 }

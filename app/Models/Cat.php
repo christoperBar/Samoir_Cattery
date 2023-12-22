@@ -12,7 +12,6 @@ class Cat extends Model
         'cat_name',
         'birthday',
         'color',
-        'cat_photo',
         'is_adoptable',
         'maturity',
         'gender',
@@ -38,5 +37,10 @@ class Cat extends Model
     public function tabbies()
     {
         return $this->hasMany(Parent_tree::class, 'tabby_id');
+    }
+
+    public function catimages()
+    {
+        return $this->hasMany(Catimage::class, 'cat_id');
     }
 }

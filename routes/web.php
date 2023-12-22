@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ControllerCertification;
 use App\Http\Controllers\ControllerEvent;
 use App\Http\Controllers\ControllerRas;
@@ -8,6 +8,7 @@ use App\Http\Controllers\ControllerCat;
 use App\Http\Controllers\ControllerCatndiptransactions;
 use App\Http\Controllers\ControllerNomnomenergytransactions;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,10 @@ Route::get('/', function () {
         ]
     );
 });
+
 //about
 Route::get('/about', [ControllerTeam::class, 'showAllTeam']);
+
 //why samoir
 Route::get('/why', function () {
     return view(
@@ -42,6 +45,7 @@ Route::get('/why', function () {
         ]
     );
 });
+
 //privacy policy
 Route::get('/privacy', function () {
     return view(
@@ -52,6 +56,7 @@ Route::get('/privacy', function () {
         ]
     );
 });
+
 //terms and conditions
 Route::get('/terms', function () {
     return view(
@@ -62,6 +67,7 @@ Route::get('/terms', function () {
         ]
     );
 });
+
 //catndip
 Route::get('/catndip', function () {
     return view(
@@ -86,11 +92,11 @@ Route::get('/nomnomenergy', function () {
 //collection
 Route::get('/collection', [ControllerRas::class, 'showAllRases']);
 Route::get('/collection/{rase}', [ControllerRas::class, 'getCatsWithID']);
-Route::get('/addcatform', [ControllerCat::class, 'createCatForm']);
-Route::post('/addcat', [ControllerCat::class, 'createCat']);
-Route::delete('/deletecat/{catid}', [ControllerCat::class, 'deleteCat']);
-Route::get('/updatecatform/{catid}', [ControllerCat::class, 'updateCatForm']);
-Route::put('/updatecat/{catid}', [ControllerCat::class, 'updateCat']);
+Route::get('/addcatform', [ControllerCat::class, 'createCatForm'])->middleware('auth');
+Route::post('/addcat', [ControllerCat::class, 'createCat'])->middleware('auth');
+Route::delete('/deletecat/{catid}', [ControllerCat::class, 'deleteCat'])->middleware('auth');
+Route::get('/updatecatform/{catid}', [ControllerCat::class, 'updateCatForm'])->middleware('auth');
+Route::put('/updatecat/{catid}', [ControllerCat::class, 'updateCat'])->middleware('auth');
 
 //adopt
 Route::get('/adopt', [ControllerRas::class, 'showAllRasesCanAdopt']);
@@ -104,11 +110,11 @@ Route::get('/addteamform',function(){
         "urlpage" => "/addteamform"
     ]
 );
-});
-Route::post('/addteam', [ControllerTeam::class, 'createTeam']);
-Route::delete('/deleteteam/{teamid}', [ControllerTeam::class, 'deleteTeam']);
-Route::get('/updateteamform/{teamid}', [ControllerTeam::class, 'updateTeamForm']);
-Route::put('/updateteam/{teamid}', [ControllerTeam::class, 'updateTeam']);
+})->middleware('auth');
+Route::post('/addteam', [ControllerTeam::class, 'createTeam'])->middleware('auth');
+Route::delete('/deleteteam/{teamid}', [ControllerTeam::class, 'deleteTeam'])->middleware('auth');
+Route::get('/updateteamform/{teamid}', [ControllerTeam::class, 'updateTeamForm'])->middleware('auth');
+Route::put('/updateteam/{teamid}', [ControllerTeam::class, 'updateTeam'])->middleware('auth');
 
 //cerfitications_aboutus
 Route::get('/addcertificationform',function(){
@@ -118,11 +124,11 @@ Route::get('/addcertificationform',function(){
         "urlpage" => "/addcertificationform"
     ]
 );
-});
-Route::post('/addcertificate', [ControllerCertification::class, 'createCertification']);
-Route::delete('/deletecertificate/{certificateid}', [ControllerCertification::class, 'deleteCertification']);
-Route::get('/updatecertificateform/{certificateid}', [ControllerCertification::class, 'updateCertificateForm']);
-Route::put('/updatecertificate/{certificateid}', [ControllerCertification::class, 'updateCertification']);
+})->middleware('auth');
+Route::post('/addcertificate', [ControllerCertification::class, 'createCertification'])->middleware('auth');
+Route::delete('/deletecertificate/{certificateid}', [ControllerCertification::class, 'deleteCertification'])->middleware('auth');
+Route::get('/updatecertificateform/{certificateid}', [ControllerCertification::class, 'updateCertificateForm'])->middleware('auth');
+Route::put('/updatecertificate/{certificateid}', [ControllerCertification::class, 'updateCertification'])->middleware('auth');
 
 //ras
 Route::get('/addrasform',function(){
@@ -132,11 +138,11 @@ Route::get('/addrasform',function(){
         "urlpage" => "/addrasform"
     ]
 );
-});
-Route::post('/addras', [ControllerRas::class, 'createRas']);
+})->middleware('auth');
+Route::post('/addras', [ControllerRas::class, 'createRas'])->middleware('auth');
 
 //CRUD catndip transaction
-Route::get('/catndiptransactions', [ControllerCatndiptransactions::class, 'getAllcatndiptransactions']);
+Route::get('/catndiptransactions', [ControllerCatndiptransactions::class, 'getAllcatndiptransactions'])->middleware('auth');
 Route::get('/addcatndiptransactionsform',function(){
     return view('addcatndiptransactions',
     [
@@ -144,14 +150,13 @@ Route::get('/addcatndiptransactionsform',function(){
         "urlpage" => "/addcatndiptransactionsform"
     ]
 );
-});
-Route::post('/addcatndiptransaction', [ControllerCatndiptransactions::class, 'createtransaction']);
-Route::put('/changecatndipstatus{catndipid}', [ControllerCatndiptransactions::class, 'updatestatus']);
-Route::delete('/deletecatndiptransaction/{catndipid}',[ControllerCatndiptransactions::class, 'deletetransaction']);
-
+})->middleware('auth');
+Route::post('/addcatndiptransaction', [ControllerCatndiptransactions::class, 'createtransaction'])->middleware('auth');
+Route::put('/changecatndipstatus{catndipid}', [ControllerCatndiptransactions::class, 'updatestatus'])->middleware('auth');
+Route::delete('/deletecatndiptransaction/{catndipid}',[ControllerCatndiptransactions::class, 'deletetransaction'])->middleware('auth');
 
 //CRUD nomnom transaction
-Route::get('/nomnomtransactions', [ControllerNomnomenergytransactions::class, 'getAllnomnomtransactions']);
+Route::get('/nomnomtransactions', [ControllerNomnomenergytransactions::class, 'getAllnomnomtransactions'])->middleware('auth');
 Route::get('/addnomnomtransactionsform',function(){
     return view('addnomnomtransactions',
     [
@@ -159,7 +164,7 @@ Route::get('/addnomnomtransactionsform',function(){
         "urlpage" => "/addnomnomtransactionsform"
     ]
 );
-});
+})->middleware('auth');
 Route::get('/ordernomnom',function(){
     return view('ordernomnom',
     [
@@ -169,9 +174,9 @@ Route::get('/ordernomnom',function(){
 );
 });
 Route::post('/ordernomnomtransaction', [ControllerNomnomenergytransactions::class, 'createorder']);
-Route::post('/addnomnomtransaction', [ControllerNomnomenergytransactions::class, 'createtransaction']);
-Route::put('/changenomnompstatus{nomnomid}', [ControllerNomnomenergytransactions::class, 'updatestatus']);
-Route::delete('/deletenomnomtransaction/{catndipid}',[ControllerNomnomenergytransactions::class, 'deletetransaction']);
+Route::post('/addnomnomtransaction', [ControllerNomnomenergytransactions::class, 'createtransaction'])->middleware('auth');
+Route::put('/changenomnompstatus{nomnomid}', [ControllerNomnomenergytransactions::class, 'updatestatus'])->middleware('auth');
+Route::delete('/deletenomnomtransaction/{nomnomid}',[ControllerNomnomenergytransactions::class, 'deletetransaction'])->middleware('auth');
 
 //CRUD events
 Route::get('/event', [ControllerEvent::class, 'showAllEvent']);
@@ -182,17 +187,24 @@ Route::get('/addevent',function(){
         "urlpage" => "/addevent"
     ]
 );
-});
-Route::post('/addevent', [ControllerEvent::class, 'createevent']);
-Route::get('/updateeventform/{eventid}', [ControllerEvent::class, 'updateEventForm']);
-Route::put('/updateevent/{eventid}', [ControllerEvent::class, 'updateEvent']);
-Route::delete('/deleteevent/{eventid}', [ControllerEvent::class, 'deleteEvent']);
+})->middleware('auth');
+Route::post('/addevent', [ControllerEvent::class, 'createevent'])->middleware('auth');
+Route::get('/updateeventform/{eventid}', [ControllerEvent::class, 'updateEventForm'])->middleware('auth');
+Route::put('/updateevent/{eventid}', [ControllerEvent::class, 'updateEvent'])->middleware('auth');
+Route::delete('/deleteevent/{eventid}', [ControllerEvent::class, 'deleteEvent'])->middleware('auth');
 
 //CRUD Adopt Transactions
-Route::get('/adopttransactions', [ControllerCat::class, 'showAlladopttransactions']);
-Route::get('/addadopttransaction', [ControllerCat::class, 'adoptCatWithID']);
-Route::post('/addadopttransaction', [ControllerCat::class, 'createAdoptTransaction']);
-Route::put('/changecatstatus{transactionid}', [ControllerCat::class, 'updatestatus']);
-Route::delete('/deletecattransaction/{transactionid}',[ControllerCat::class, 'deletetransaction']);
+Route::get('/adopttransactions', [ControllerCat::class, 'showAlladopttransactions'])->middleware('auth');
+Route::get('/addadopttransaction', [ControllerCat::class, 'adoptCatWithID'])->middleware('auth');
+Route::post('/addadopttransaction', [ControllerCat::class, 'createAdoptTransaction'])->middleware('auth');
+Route::put('/changecatstatus{transactionid}', [ControllerCat::class, 'updatestatus'])->middleware('auth');
+Route::delete('/deletecattransaction/{transactionid}',[ControllerCat::class, 'deletetransaction'])->middleware('auth');
 
+//CRUD Cat details
+Route::get('/catdetails/{catid}', [ControllerCat::class, 'showcatdetails']);
+Route::post('/addcatimages/{catid}',[ControllerCat::class, 'addmoreimages'] )->middleware('auth');
 
+//Login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');

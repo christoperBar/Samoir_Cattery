@@ -41,7 +41,9 @@
                 Meet the team
             </h2>
 
-            {{-- admin --}}
+            @auth
+                
+            
             <a href="/addteamform"
                 class="flex items-center justify-center text-white bg-secondary hover:bg-primary focus:ring-4 focus:ring-primary font-medium rounded-lg text-sm px-4 py-2 dark:bg-secondary dark:hover:bg-primary focus:outline-none dark:focus:ring-primary">
                 <svg class="h-3.5 w-3.5 mr-1.5 -ml-1" fill="currentColor" viewbox="0 0 20 20"
@@ -51,6 +53,7 @@
                 </svg>
                 Add Team
             </a>
+            @endauth
 
         </div>
 
@@ -95,7 +98,9 @@
 
 
                         </div>
-                        {{-- Admin --}}
+                        @auth
+                            
+                        
                         <div class="flex flex-col sm:flex-row pt-2 pb-6 ">
                             <a href="/updateteamform/{{ $team->id }}"
                                 class="inline-flex items-center px-3 py-2 mx-1 my-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none">
@@ -124,6 +129,7 @@
                                 </button>
                             </form>
                         </div>
+                        @endauth
                     </div>
                 </div>
             @endforeach
@@ -135,7 +141,9 @@
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Certification</h2>
         
         <br>
-        {{-- admin --}}
+        @auth
+            
+        
         <a href="/addcertificationform"
         class="flex items-center justify-center text-white bg-secondary hover:bg-primary focus:ring-4 focus:ring-primary font-medium rounded-lg text-sm px-4 py-2 dark:bg-secondary dark:hover:bg-primary focus:outline-none dark:focus:ring-primary">
         <svg class="h-3.5 w-3.5 mr-1.5 -ml-1" fill="currentColor" viewbox="0 0 20 20"
@@ -145,6 +153,7 @@
         </svg>
         Add Certification
         </a>
+        @endauth
         </div>
         
         <div class="mx-auto max-w-7xl gap-x-24 gap-y-20 px-6 lg:px-8 flex justify-center ">
@@ -166,7 +175,9 @@
                             d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
                     </svg>
                 </a>
-                {{-- Admin --}}
+                @auth
+                    
+               
                 <div class="flex flex-col sm:flex-row pt-2 pb-6 ">
                     <a href="/updatecertificateform/{{ $certificate->id }}"
                         class="inline-flex items-center px-3 py-2 mx-1 my-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none">
@@ -195,6 +206,7 @@
                         </button>
                     </form>
                 </div>
+                @endauth
                 
             </div>
             @endforeach

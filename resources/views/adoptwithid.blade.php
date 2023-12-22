@@ -25,7 +25,7 @@
         </ul>
     </div>
 
-    {{-- admin --}}
+    @auth
     <div class="flex flex-col space-y-4 sm:flex-col pb-6 mx-10">
         
         <a href="/addadopttransaction"
@@ -38,11 +38,15 @@
             Add Adopt Transactions
         </a>
     </div>
+    @endauth
 
     <div class="px-6 pt-2 pb-6 sm:pt-2 sm:pb-6 sm:px-20 gap-x-10 gap-y-20 lg:px-8 flex flex-wrap ">
         @foreach ($cats as $index => $cat)
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img class="rounded-t-lg h-60 w-96 object-cover" src="{{ $cat->cat_photo }}" alt="" />
+            <div class="max-w-sm hover:bg-gray-100 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="/catdetails/{{ $cat->id }}" class="w-0 p-0 m-0">
+                <img class="rounded-t-lg h-60 w-96 object-cover" src="{{ $cat->catimages->first()->cat_photo }}" alt="" />
+                </a>
+                <a href="/catdetails/{{ $cat->id }}" class="w-0 p-0 m-0">
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $cat->cat_name }}
                     </h5>
@@ -57,7 +61,9 @@
                             Adopt Now
                         </a>
 
-                        {{-- Admin --}}
+                        @auth
+                            
+                        
                         <a href="/updatecatform/{{ $cat->id }}" class="inline-flex items-center px-3 py-2 mx-1 my-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
@@ -76,6 +82,7 @@
                                 Delete
                             </button>
                         </form>
+                        @endauth
 
 
                     </div>
@@ -83,6 +90,7 @@
 
 
                 </div>
+                </a>
             </div>
         @endforeach
     </div>

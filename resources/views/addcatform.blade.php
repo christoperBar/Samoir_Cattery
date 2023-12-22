@@ -5,7 +5,7 @@
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add new cat</h2>
-            <form method="POST" action="/addcat" enctype="multipart/form-data">
+            <form method="POST" action="/addcat" enctype="multipart/form-data" id="imageForm">
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
@@ -76,8 +76,12 @@
                         </select>
                     </div>
 
+                    <div id="imagePreview" class="flex flex-row flex-wrap items-center justify-center w-full sm:col-span-2">
+                        
+                    </div>
+
                     <div class="flex items-center justify-center w-full sm:col-span-2">
-                        <label for="cat_photo" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <label for="cat_photo" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">Upload Your Cat Images
                             <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                 <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
@@ -85,20 +89,11 @@
                                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">JPEG, PNG or JPG (MAX. 1MB)</p>
                             </div>
-                            <input name="cat_photo" id="cat_photo" type="file"  />
+                            <input name="images[]" id="images" type="file" accept="image/jpg, image/png, image/jpeg" multiple />
                         </label>
                     </div> 
 
 
-                    {{-- <div class="sm:col-span-2">
-                        <label for="cat_photo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cat
-                            Photo</label>
-
-                        <input
-                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            name="cat_photo" id="cat_photo" type="file">
-
-                    </div> --}}
                 </div>
                 <button type="submit"
                     class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-secondary rounded-lg focus:ring-4 hover:bg-primary">
@@ -107,4 +102,95 @@
             </form>
         </div>
     </section>
+
+    <script>
+        $(document).ready(function () {
+            const imageDataTransfer = new DataTransfer(); 
+            $('#images').change(function(e){
+                e.preventDefault();
+                for(var i = 0; i < this.files.length; i++){
+                    var fileItem = this.files.item(i);
+                    $('#imagePreview').append(
+                        `<div name='${fileItem.name}' class="relative">` +
+                        `<img  name='${fileItem.name}' class="rounded h-32 w-52 object-cover" src='${URL.createObjectURL(fileItem)}'  alt="">`+
+                        `<button name='${fileItem.name}' type="button" id="deleteimage" class="absolute top-0 right-0 text-red-500 bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">x</button>` +
+                        `</div>`
+                    );
+                };
+                for (let file of this.files) {
+                    imageDataTransfer.items.add(file);
+                }
+                    this.files = imageDataTransfer.files;
+            });
+            $(document).on('click', '#deleteimage', function () {
+                var fileName = $(this).attr('name');
+                for(let i = 0; i < imageDataTransfer.items.length; i++){
+                        if(fileName === imageDataTransfer.items[i].getAsFile().name){
+                            imageDataTransfer.items.remove(i);
+                            break;
+                        }
+                    }
+                $('#images')[0].files = imageDataTransfer.files;
+                $('div[name="' + fileName + '"]').remove();
+            });
+        });
+    </script>
+
+
+    
+
+    {{-- <script>
+        $(document).ready(function () {
+            // Event listener untuk input file
+            $('#images').on('change', function () {
+                var files = $(this)[0].files;
+                $('#imagePreview').empty(); // Bersihkan container preview
+    
+                // Loop melalui setiap file dan tampilkan preview
+                for (var i = 0; i < files.length; i++) {
+                    readAndPreview(files[i]);
+                }
+            });
+    
+            function readAndPreview(file) {
+                var reader = new FileReader();
+    
+                reader.onload = function (e) {
+                    var fileName = file.name; // Simpan nama file
+                    var imageContainer = $(
+                        '<div class="relative">' +
+                        '<img src="' + e.target.result + '" alt="Preview" class="rounded h-32 w-52 object-cover">' +
+                        '<button type="button" class="absolute top-0 right-0 text-red-500 bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" onclick="removeImage(this, \'' + fileName + '\')">x</button>' +
+                        '</div>'
+                    );
+    
+                    $('#imagePreview').append(imageContainer);
+                };
+    
+                reader.readAsDataURL(file);
+            }
+    
+            // Fungsi untuk menghapus gambar dari preview
+            window.removeImage = function (element, fileName) {
+                var input = $('#images');
+    
+                // Hapus file dari input files
+                var inputFiles = input[0].files;
+                var newFiles = Array.from(inputFiles).filter(file => file.name !== fileName);
+    
+                // Buat objek FileList baru dan atur ulang nilai input file
+                var newFileList = new DataTransfer();
+                newFiles.forEach(file => newFileList.items.add(file));
+                input[0].files = newFileList.files;
+    
+                // Hapus preview gambar
+                $(element).parent().remove();
+            };
+        });
+    </script> --}}
+
+    
+    
+
+    
 @endsection

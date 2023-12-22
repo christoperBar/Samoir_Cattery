@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->string('cat_name');
             $table->string('birthday');
             $table->string('color');
-            $table->string('cat_photo')->nullable();
             $table->boolean('is_adoptable');
             $table->boolean('is_available')->default(true);
             $table->enum('maturity', ['kitten', 'adult'])->default('kitten');

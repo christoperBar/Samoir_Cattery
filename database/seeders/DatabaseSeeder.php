@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            RaseSeeder::class,
-            CatSeeder::class,
-            TeamSeeder::class,
-            CertificationSeeder::class,
-            EventSeeder::class
+            // RaseSeeder::class,
+            // CatSeeder::class,
+            // TeamSeeder::class,
+            // CertificationSeeder::class,
+            // EventSeeder::class
         ]);
     }
     

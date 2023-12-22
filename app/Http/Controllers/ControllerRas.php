@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cat;
 use App\Models\Rase;
+use App\Models\Catimage;
 use Illuminate\Http\Request;
 
 class ControllerRas extends Controller
@@ -12,7 +13,6 @@ class ControllerRas extends Controller
     {
         $allCats = Cat::where('is_available', true)->get()->sortBy('cat_name');
         $allRases = Rase::all()->sortBy('ras_name');
-
         return view('collection', [
             'rases' => $allRases,
             'cats' => $allCats,

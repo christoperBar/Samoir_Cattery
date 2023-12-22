@@ -17,7 +17,8 @@ class UserSeeder extends Seeder
             'email' => 'admin1234@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt("admin123"),
-            'contact' => '082244838463'
+            'contact' => '082244838463',
+            'is_admin' => true
         ]);
     }
 }
