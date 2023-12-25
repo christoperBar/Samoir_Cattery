@@ -54,6 +54,7 @@
                     <p class="font-normal text-gray-700 dark:text-gray-400">Color: {{ $cat->color }}</p>
                     <p class="font-normal text-gray-700 dark:text-gray-400">Ras: {{ $cat->ras->ras_name }}</p>
                     <p class="font-normal text-gray-700 dark:text-gray-400">Maturity: {{ $cat->maturity }}</p>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Gender: {{ $cat->gender }}</p>
                     <br>
 
                     <div class="flex flex-col sm:flex-row pt-2 pb-6 ">
