@@ -18,19 +18,25 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $login = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+{
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ], [
+        'email.required' => 'Email wajib diisi.',
+        'email.email' => 'Format email tidak valid.',
+        'password.required' => 'Password wajib diisi.',
+    ]);
 
-        if(Auth::attempt($login)){
-            $request->session()->regenerate();
-            return redirect()->intended('/');
-        }
-
-        return back();
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/');
     }
+
+    return back()->withErrors([
+        'login' => 'Login gagal. Email atau password salah.'
+    ]);
+}
 
     public function logout(Request $request){
         Auth::logout();

@@ -5,6 +5,7 @@ use App\Http\Controllers\ControllerEvent;
 use App\Http\Controllers\ControllerRas;
 use App\Http\Controllers\ControllerTeam;
 use App\Http\Controllers\ControllerCat;
+use App\Http\Controllers\ControllerUser;
 use App\Http\Controllers\ControllerCatndiptransactions;
 use App\Http\Controllers\ControllerNomnomenergytransactions;
 use Illuminate\Support\Facades\Route;
@@ -208,3 +209,7 @@ Route::post('/addcatimages/{catid}',[ControllerCat::class, 'addmoreimages'] )->m
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+//Settings
+Route::get('/settings', [ControllerUser::class, 'updateuserform'])->middleware('auth');
+Route::put('/settings', [ControllerUser::class, 'updateuser'])->middleware('auth');
